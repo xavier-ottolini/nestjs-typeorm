@@ -1,0 +1,35 @@
+services:
+  db:
+    container_name: db
+    image: mysql:8.4.0
+    restart: always
+    command: ["mysqld", "--mysql-native-password=ON"]
+    environment:
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db:/var/lib/mysql
+  api:
+    container_name: api
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+      - '3000:3000'
+    environment:
+      - DB_TYPE=mysql
+      - MYSQL_HOST=db
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_TCP_PORT=$MYSQL_PORT
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+    volumes:
+      - /app/node_modules
+      - .:/app
+    depends_on:
+      - db
