@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Param, Body, Put } from '@nestjs/common';
+import { Controller, Get, Post, Delete, HttpCode, Param, Body, Put } from '@nestjs/common';
 import { ForumService } from './forum.service';
 import { Forum } from './forum.entity'
 
@@ -10,6 +10,7 @@ export class ForumController {
      * @returns 
      */
     @Get()
+    @HttpCode(200)
     async findAll(): Promise<Array<Forum>> {
         return await this.forumService.findAll()
     }
@@ -20,6 +21,7 @@ export class ForumController {
      * @returns 
      */
     @Get(':id')
+    @HttpCode(200)
     async findOne(@Param('id') id: number): Promise<Forum | Error> {
         const forum = await this.forumService.findOne(id)
         if (!forum) {
@@ -29,6 +31,7 @@ export class ForumController {
     }
 
     @Post()
+    @HttpCode(201)
     async create(@Body() forum: Forum): Promise<Forum> {
         console.error("post forum:", forum);
         return this.forumService.create(forum)
@@ -41,6 +44,7 @@ export class ForumController {
      * @returns 
      */
     @Put(':id')
+    @HttpCode(200)
     async update(@Param('id') id: number,  @Body() forum: Forum): Promise<Forum | Error> {
         const updatedForum = await this.forumService.update(id, forum)
         if (updatedForum != null) {
@@ -51,6 +55,7 @@ export class ForumController {
     }
 
     @Delete(':id')
+    @HttpCode(204)
     async delete(@Param('id') id: number): Promise<Error | void> {
         const result = await this.forumService.delete(id)
         if (result.affected ===  0) {

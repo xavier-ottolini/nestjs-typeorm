@@ -1,11 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToOne, JoinColumn } from "typeorm";
+import { User } from "src/users/user.entity";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable } from "typeorm";
 
 @Entity() 
 export class Forum {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @OneToOne(() => Forum, 
+    @ManyToOne(() => Forum, 
         (forum) => forum.id, 
         {
             onDelete: 'SET NULL'
@@ -22,4 +23,16 @@ export class Forum {
         default: ''
     })
     message: string;
+
+    @ManyToOne(() => User, 
+        (user) => user.id, 
+        {
+            onDelete: 'CASCADE'
+        })
+    @JoinColumn()
+    user: User | null
+
+    @ManyToMany(() => Forum)
+    @JoinTable()
+    forums: Forum[]
 }

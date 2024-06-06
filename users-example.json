@@ -1,0 +1,13 @@
+[{
+    "id": 1,
+    "firstname": "Xavier",
+    "lastname": "Ottolini",
+    "username": "xavier.ottolini",
+    "email": "xavier.ottolini@veonum.com"
+  }, {
+    "id": 2,
+    "firstname": "François",
+    "lastname": "Laconique",
+    "username": "francois.laconique",
+    "email": "francois.laconique@veonum.com"
+  }]

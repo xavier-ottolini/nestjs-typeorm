@@ -27,6 +27,7 @@ export class ForumService {
             where: { id },
             relations: {
                 parent: true,
+                user: true
             },
         })
         console.debug('topic: ', entity)

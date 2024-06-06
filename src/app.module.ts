@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ForumModule } from './forum/forum.module';
+import { UsersModule } from './users/users.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 
@@ -9,6 +10,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [
     ConfigModule.forRoot(),
     ForumModule,
+    UsersModule,
     TypeOrmModule.forRoot({
       type: process.env.DB_TYPE as 'mysql' | 'mariadb',
       host: process.env.MYSQL_HOST,
