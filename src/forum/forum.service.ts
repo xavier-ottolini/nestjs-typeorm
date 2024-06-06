@@ -23,9 +23,14 @@ export class ForumService {
      * @returns 
      */
     async findOne(id: number): Promise<Forum | null> {
-        return await this.forumRepository.findOne({
-            where: { id }
+        const entity = await this.forumRepository.findOne({
+            where: { id },
+            relations: {
+                parent: true,
+            },
         })
+        console.debug('topic: ', entity)
+        return entity
     }
 
     /**

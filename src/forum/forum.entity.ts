@@ -5,12 +5,12 @@ export class Forum {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @OneToOne(() => Forum, (forum) => forum.id)
+    @OneToOne(() => Forum, 
+        (forum) => forum.id, 
+        {
+            onDelete: 'SET NULL'
+        })
     @JoinColumn()
-    @Column({
-        nullable: true,
-        default: null
-    })
     parent: Forum | null
 
     @Column({
