@@ -11,8 +11,4 @@ export class Keyword {
         default: ''
     })
     label: string;
-
-    @ManyToMany(() => Forum)
-    @JoinTable()
-    forums: Forum[]
 }

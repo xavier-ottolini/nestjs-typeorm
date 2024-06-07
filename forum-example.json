@@ -4,19 +4,45 @@
         "title": "premier sujet",
         "message": "salut à tous, j'ai un problème, je suis le premier homme sur la lune",
         "parent": null,
-        "user": 1
+        "user": 1,
+        "keywords": [{
+          "id": 1,
+          "label": "Satellite"
+        }, {
+          "id": 2,
+          "label": "Astronaute"
+        }, {
+          "id": 3,
+          "label": "Exploration"
+        }]        
     }
     ,
     {
         "id": 2,
         "title": "Deuxième sujet modifié",
-        "message": "voici le deuxième sujet"
-    },
+        "message": "voici le deuxième sujet",
+        "user": 1,
+        "keywords": [{
+            "id": 3
+          }]
+    }
+    ,
     {
         "title": "Re: premier sujet",
         "message": "salut à toi! mais non, tu n'es pas tout seul!",
         "parent": 1,
         "user": 2,
-        "id": 3
+        "id": 3,
+        "keywords": [{
+            "id": 1,
+            "label": "Satellite"
+          }, {
+            "id": 2,
+            "label": "Astronaute"
+          }, {
+            "id": 4,
+            "label": "Rencontre"
+          }]
+  
     }
 ]

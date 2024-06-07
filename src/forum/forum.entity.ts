@@ -1,3 +1,4 @@
+import { Keyword } from "src/keywords/keyword.entity";
 import { User } from "src/users/user.entity";
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn, ManyToMany, JoinTable } from "typeorm";
 
@@ -32,7 +33,7 @@ export class Forum {
     @JoinColumn()
     user: User | null
 
-    @ManyToMany(() => Forum)
+    @ManyToMany(() => Keyword)
     @JoinTable()
-    forums: Forum[]
+    keywords: Keyword[]
 }

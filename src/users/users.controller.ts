@@ -48,7 +48,7 @@ export class UsersController {
    **/
   @HttpCode(200) 
   @Put(':id')
-  async update (@Param('id') id: number, @Body() user: User): Promise<any> {
+  async update (@Param('id') id: number, @Body() user: Partial<User>): Promise<any> {
     return this.usersService.update(id, user);
   }
 

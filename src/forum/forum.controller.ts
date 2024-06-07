@@ -45,7 +45,7 @@ export class ForumController {
      */
     @Put(':id')
     @HttpCode(200)
-    async update(@Param('id') id: number,  @Body() forum: Forum): Promise<Forum | Error> {
+    async update(@Param('id') id: number,  @Body() forum: Partial<Forum>): Promise<Forum | Error> {
         const updatedForum = await this.forumService.update(id, forum)
         if (updatedForum != null) {
             return new Error('Forum topic not found')

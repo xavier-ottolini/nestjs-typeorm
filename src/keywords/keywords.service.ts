@@ -2,7 +2,6 @@ import { Injectable } from "@nestjs/common";
 import { Keyword } from "./keyword.entity";
 import { DeleteResult, Repository } from "typeorm";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Key } from "readline";
 
 @Injectable()
 export class KeywordsService {
@@ -11,7 +10,7 @@ export class KeywordsService {
      * Find all keywords
      * @returns 
      */
-    findAll(): Promise<Array<Keyword>> {
+    async findAll(): Promise<Array<Keyword>> {
         return this.keywordRepository.find()
     }
 
@@ -20,12 +19,9 @@ export class KeywordsService {
      * @param id 
      * @returns 
      */
-    findOne(id: number): Promise<Keyword | null> {
+    async findOne(id: number): Promise<Keyword | null> {
         return this.keywordRepository.findOne({
-            where: { id },
-            relations: {
-                forums: true,
-            }
+            where: { id }
         })
     }
 
@@ -34,12 +30,30 @@ export class KeywordsService {
      * @param keyword 
      * @returns 
      */
-    create(keyword: Keyword): Promise<Keyword> {
+    async create(keyword: Keyword): Promise<Keyword> {
         const newKeyword = this.keywordRepository.create(keyword)
-        return  this.keywordRepository.save(keyword)
+        return this.keywordRepository.save(newKeyword)
     }
 
-    update(keyword: Keyword): Promise<Keyword> {
-        
+    /**
+     * 
+     * @param id 
+     * @param keyword 
+     * @returns 
+     */
+    async update(id: number, keyword: Partial<Keyword>): Promise<Keyword | null> {
+        await this.keywordRepository.update(id, keyword)
+        return this.keywordRepository.findOne({
+            where: { id }
+        })
+    }
+
+    /**
+     * 
+     * @param id 
+     * @returns 
+     */
+    async delete(id: number): Promise<DeleteResult> {
+        return this.keywordRepository.delete(id)
     }
 }

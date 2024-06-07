@@ -14,7 +14,11 @@ export class ForumService {
      * @returns 
      */
     async findAll(): Promise<Array<Forum>> {
-        return await this.forumRepository.find()
+        return await this.forumRepository.find({
+            order: {
+                title: "ASC"
+            },
+        })
     }
 
     /**
@@ -27,7 +31,8 @@ export class ForumService {
             where: { id },
             relations: {
                 parent: true,
-                user: true
+                user: true,
+                keywords: true,
             },
         })
         console.debug('topic: ', entity)
@@ -50,7 +55,7 @@ export class ForumService {
      * @param forum
      * @returns
      */
-    async update(id: number, forum: Forum): Promise<Forum | null> {
+    async update(id: number, forum: Partial<Forum>): Promise<Forum | null> {
         this.forumRepository.update(id, forum)
         return this.forumRepository.findOne({
             where: { id }
