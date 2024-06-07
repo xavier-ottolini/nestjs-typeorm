@@ -227,5 +227,5 @@ $ npm run test:cov
 
 ## License
 
-Nest is [MIT licensed](https://raw.githubusercontent.com/nestjs/nestjs.com/master/LICENSE).
-TypeOrm is [MIT License](https://github.com/typeorm/typeorm/blob/master/LICENSE)
+- Nest is [MIT licensed](https://raw.githubusercontent.com/nestjs/nestjs.com/master/LICENSE).
+- TypeOrm is [MIT License](https://github.com/typeorm/typeorm/blob/master/LICENSE)
