@@ -222,7 +222,7 @@ $ npm run test:cov
 
 ## Stay in touch
 
-- Website - [https://nestjs.com](https://www.veonum.com//)
+- Website - [Veonum Internet site](https://www.veonum.com/)
 - Author - [Xavier Ottolini](https://www.veonum.com/contact/)
 
 ## License
