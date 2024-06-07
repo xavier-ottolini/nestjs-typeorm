@@ -14,7 +14,7 @@
         }, {
           "id": 3,
           "label": "Exploration"
-        }]        
+        }]
     }
     ,
     {
@@ -33,7 +33,8 @@
         "parent": 1,
         "user": 2,
         "id": 3,
-        "keywords": [{
+        "keywords": [
+          {
             "id": 1,
             "label": "Satellite"
           }, {
@@ -42,7 +43,8 @@
           }, {
             "id": 4,
             "label": "Rencontre"
-          }]
+          }
+        ]
   
     }
 ]
